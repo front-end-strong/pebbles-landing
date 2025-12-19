@@ -1,0 +1,16 @@
+// Forward variables and mixins for use in components
+@forward 'variables';
+@forward 'mixins';
+
+// Use base styles
+@use 'base';
+
+// Use components
+@use 'components/navigation';
+@use 'components/hero';
+@use 'components/features';
+@use 'components/how-it-works';
+@use 'components/testimonial';
+@use 'components/cta';
+@use 'components/footer';
+

@@ -1,0 +1,147 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.nav {
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+
+  html.dark & {
+    border-bottom-color: var(--border-dark);
+  }
+
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__logo {
+    width: 2rem;
+    height: 2rem;
+    background: var(--primary);
+    border-radius: $radius-sm;
+    @include flex-center;
+    color: white;
+
+    .material-icons-round {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+  }
+
+  &__menu {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+
+    @include respond-to(md) {
+      display: flex;
+    }
+  }
+
+  &__link {
+    font-size: 0.875rem;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  &__theme-toggle {
+    padding: $spacing-sm;
+    border-radius: $radius-full;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    @include flex-center;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    html.dark &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  &__theme-icon {
+    &--dark {
+      display: block;
+    }
+
+    &--light {
+      display: none;
+    }
+  }
+
+  &__cta {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: $font-weight-semibold;
+    color: white;
+    background: var(--primary);
+    border-radius: $radius-full;
+    transition: opacity 0.2s;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.3);
+
+    @include respond-to(md) {
+      display: inline-flex;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5);
+    }
+  }
+}
+
+.dark {
+  .nav__theme-icon--dark {
+    display: none;
+  }
+
+  .nav__theme-icon--light {
+    display: block;
+  }
+}
+

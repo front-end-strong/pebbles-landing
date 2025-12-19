@@ -1,0 +1,68 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.testimonial {
+  padding: 5rem 0;
+  background: $gray-50;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+
+  html.dark & {
+    background: #121216;
+    border-color: var(--border-dark);
+  }
+
+  &__container {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    text-align: center;
+  }
+
+  &__icon {
+    font-size: 2.25rem;
+    color: rgba(139, 92, 246, 0.5);
+    margin-bottom: 2rem;
+  }
+
+  &__quote {
+    font-size: 1.5rem;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 2rem;
+
+    @include respond-to(md) {
+      font-size: 2.25rem;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__author-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, $blue-400, $purple-500);
+  }
+
+  &__author-info {
+    text-align: left;
+  }
+
+  &__author-name {
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+  }
+
+  &__author-role {
+    font-size: 0.875rem;
+    color: $gray-500;
+  }
+}
+
