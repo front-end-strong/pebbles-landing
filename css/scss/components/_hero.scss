@@ -347,10 +347,16 @@
   &__phone-filters {
     display: flex;
     gap: 0.75rem;
-    overflow-x: auto;
+    overflow: auto;
     padding-bottom: 1rem;
-    margin-bottom: 0.5rem;
     margin-top: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE/Edge
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome/Safari
+    }
   }
 
   &__phone-filter {
@@ -362,17 +368,24 @@
     border: none;
     cursor: pointer;
     transition: all 0.2s;
+    flex-shrink: 0; // Prevent filters from shrinking on mobile
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem; // Ensure consistent height
 
     &--active {
       background: var(--primary);
       color: white;
       box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.4);
+      padding: 0.5rem 1.25rem; // Explicit padding to ensure symmetry
     }
 
     &--inactive {
       background: $surface-dark;
       border: 1px solid $gray-800;
       color: $gray-300;
+      padding: 0.5rem 1rem; // Slightly less horizontal padding for inactive
       @include flex-center;
       gap: 0.5rem;
     }

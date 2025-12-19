@@ -571,10 +571,15 @@ html.dark .hero__button--secondary {
 .hero__phone-filters {
   display: flex;
   gap: 0.75rem;
-  overflow-x: auto;
+  overflow: auto;
   padding-bottom: 1rem;
-  margin-bottom: 0.5rem;
   margin-top: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hero__phone-filters::-webkit-scrollbar {
+  display: none;
 }
 .hero__phone-filter {
   padding: 0.5rem 1.25rem;
@@ -585,16 +590,23 @@ html.dark .hero__button--secondary {
   border: none;
   cursor: pointer;
   transition: all 0.2s;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
 }
 .hero__phone-filter--active {
   background: var(--primary);
   color: white;
   box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.4);
+  padding: 0.5rem 1.25rem;
 }
 .hero__phone-filter--inactive {
   background: #1E1E24;
   border: 1px solid #1F2937;
   color: #D1D5DB;
+  padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1315,6 +1327,12 @@ html.dark .testimonial {
   height: 3rem;
   border-radius: 50%;
   background: linear-gradient(to bottom right, #60A5FA, #A855F7);
+}
+.testimonial__author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 .testimonial__author-info {
   text-align: left;
